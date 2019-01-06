@@ -2,15 +2,15 @@
 Employee CURD operation using Spring Boot and Angular6
 
 Folder -> Details
-******************
-BackEnd --> Spring-Boot implementation
-UI --> Angular UI code
-ScreenShots --> Screenshots of backend and ui results
+------------------
+BackEnd --> Spring-Boot implementation<br>
+UI --> Angular UI code<br>
+ScreenShots --> Screenshots of backend and ui results<br>
 
 --------------------------------------------------------------------------------------------------------------------
 UI Task (Angular-6)
 --------------------------------------------------------------------------------------------------------------------
-1. Create an UI which allow to upload csv file containing employee information
+1. Create an UI which allow to upload csv file containing employee information<br>
      a. Employee csv contains the following columns: name, department, designation, salary, joining date
 2. Show the uploaded Employee information in a table.
 3. Table should have pagination capabilities.
@@ -28,9 +28,9 @@ Server API Task
 Validation
 --------------------------------------------------------------------------------------------------------------------
 * Beside basic validation for the uploaded file.
-* Following are the Validation for each field:
-     name -> can only contain alphabets
-     department -> alphanumeric with -_* as special characters
-     designation -> Developer, Senior Developer, Manager, Team Lead, VP, CEO
-     salary -> can only contain Numeric value
+* Following are the Validation for each field:<br>
+     name -> can only contain alphabets<br>
+     department -> alphanumeric with -_* as special characters<br>
+     designation -> Developer, Senior Developer, Manager, Team Lead, VP, CEO<br>
+     salary -> can only contain Numeric value<br>
      joining date -> yyyy-MM-dd format
