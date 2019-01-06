@@ -1,5 +1,5 @@
 # employee-curd
-Employee CURD operation using Spring Boot and Angular6, initial data imported via csv
+Employee CURD operation using Spring Boot and Angular6
 --------------------------------------------------------------------------------------------------------------------
 UI Task (Angular-6)
 --------------------------------------------------------------------------------------------------------------------
