@@ -1,5 +1,12 @@
 # employee-curd
 Employee CURD operation using Spring Boot and Angular6
+
+Folder -> Details
+******************
+BackEnd --> Spring-Boot implementation
+UI --> Angular UI code
+ScreenShots --> Screenshots of backend and ui results
+
 --------------------------------------------------------------------------------------------------------------------
 UI Task (Angular-6)
 --------------------------------------------------------------------------------------------------------------------
