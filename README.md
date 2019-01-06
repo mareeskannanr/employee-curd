@@ -8,7 +8,7 @@ UI --> Angular UI code<br>
 ScreenShots --> Screenshots of backend and ui results<br>
 
 --------------------------------------------------------------------------------------------------------------------
-UI Task (Angular-6)
+UI Task
 --------------------------------------------------------------------------------------------------------------------
 1. Create an UI which allow to upload csv file containing employee information<br>
      a. Employee csv contains the following columns: name, department, designation, salary, joining date
