@@ -1,0 +1,115 @@
+<div class="row">
+	<div class="col">
+		<div class="col" style="background-color:lightgray">
+			<div style="padding:10px;margin-top:10px;">
+				<h3>
+					<span class="fa fa-users"></span> Employees
+					<div class="float-right">
+						<button type="button" class="btn btn-danger" (click)="downloadErrorFile()">
+						<span class='fa fa-download'></span> Error
+						</button>&nbsp;&nbsp;
+						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#uploadModal" (click)="resetModal()">
+						<span class='fa fa-upload'></span> CSV
+						</button>
+					</div>
+				</h3>
+			</div>
+		</div>
+		<div class="col" style="margin-top:50px;" *ngIf="employeeArray.length > 0">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr class="text-center">
+						<th>Name</th>
+						<th>Department</th>
+						<th>Designation</th>
+						<th>Salary</th>
+						<th>Joining Date</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let item of employeeArray | paginate: { id: 'employee_pagination',
+						itemsPerPage: 10,
+						currentPage: page,
+						totalItems: totalRecords }">
+						<td>{{item.name}}</td>
+						<td>{{item.department}}</td>
+						<td class="text-center">{{item.designation}}</td>
+						<td class="text-right">{{item.salary}}</td>
+            <td class="text-center">{{item.joiningDate}}</td>
+            <td style="width:5%">
+              <button type="button" class="btn btn-default" (click)="openEmployee(item)">
+                <span class="fa fa-edit"></span>
+              </button>
+            </td>
+					</tr>
+				</tbody>
+			</table>
+			<div>
+				<pagination-controls  id="employee_pagination" maxSize="10" directionLinks="true" (pageChange)="page = $event"></pagination-controls>
+			</div>
+		</div>
+		<div class="col" style="margin-top:50px;" *ngIf="employeeArray.length == 0">
+			<div class="row center-block">
+				<div class="col-3"></div>
+				<div class="col-6 text-center alert alert-primary">
+						No Employee Information available!
+				</div>
+				<div class="col-3"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="modal" id="uploadModal" data-backdrop="static" data-keyboard="false">
+	<form #uploadForm="ngForm">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title"><span class="fa fa-file"></span> Employee CSV</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col form-group">
+							<input type="file" name="file" id="file" class="form-control" #file="ngModel" [(ngModel)]="upload.file" accept=".csv" (change)="getFileData($event)" required />
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="text-center">
+						<button type="button" class="btn btn-success" (click)="uploadCSV()" [disabled]="uploadForm.form.invalid">
+						<span class="fa fa-upload"></span> Upload
+						</button>&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn btn-danger" data-dismiss="modal">
+						<span class="fa fa-times"></span> Close
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+  <!-- The Modal -->
+<div class="modal" id="responseModal" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{modal.title}}</h4>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+					<div [innerHtml]="modal.body"></div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">
+          <span class="fa fa-times"></span> Close
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

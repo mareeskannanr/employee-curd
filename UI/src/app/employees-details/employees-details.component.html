@@ -1,0 +1,100 @@
+<div class="row" style="margin-top:20px;margin-bottom:15px;">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <div class="card">
+            <div class="card-header">
+                <h3><span class="fa fa-user"></span> Employee Information</h3>
+            </div>
+            <div class="card-body">
+                <p class="text-primary text-center">* All Fields are mandatory</p>
+                <form #employeeForm="ngForm">
+                  <div class='row form-group'>
+                    <div class="col">
+                        <label><b>Name</b></label>
+                        <input type="text" class="form-control" pattern="^[a-zA-Z]*$" name="name" #name="ngModel"
+                              [(ngModel)]="employee.name" 
+                              [class.is-invalid]="name.invalid && name.touched" required />
+                        <small class="text-danger" *ngIf="name.errors && name.errors.pattern &&(name.invalid || name.touched)">
+                          Name is invalid
+                        </small>
+                    </div>
+                  </div>
+                  <div class='row form-group'>
+                    <div class="col">
+                        <label><b>Department</b></label>
+                        <input type="text" class="form-control" name="department" #department="ngModel"
+                              [(ngModel)]="employee.department" 
+                              [class.is-invalid]="department.invalid && department.touched" pattern="^[A-Za-z0-9-_*]*$" required />
+                        <small class="text-danger" *ngIf="department.errors && department.errors.pattern &&(department.invalid || department.touched)">
+                          Department is invalid
+                        </small>
+                    </div>
+                  </div>
+                  <div class='row form-group'>
+                    <div class="col">
+                        <label><b>Designation</b></label>
+                        <select class="form-control" name="designation" #designation="ngModel" [(ngModel)]="employee.designation" 
+                        [class.is-invalid]="designation.invalid && designation.touched" required>
+                          <option></option>
+                          <option *ngFor="let item of designationArray" [value]="item">
+                            {{item}}
+                          </option>
+                        </select>
+                    </div>
+                  </div>
+                  <div class='row form-group'>
+                    <div class="col">
+                        <label><b>Salary</b></label>
+                        <input type="number" class="form-control" name="salary" #salary="ngModel"
+                              [(ngModel)]="employee.salary" 
+                              [class.is-invalid]="salary.invalid && salary.touched" min="0" required />
+                    </div>
+                  </div>
+                  <div class='row form-group'>
+                      <div class="col">
+                          <label><b>Joining Date</b></label>
+                          <input type="date" class="form-control" name="joiningDate" #joiningDate="ngModel"
+                                [(ngModel)]="employee.joiningDate" 
+                                [class.is-invalid]="joiningDate.invalid && joiningDate.touched" required />
+                      </div>
+                    </div>
+                </form>
+            </div> 
+            <div class="card-footer">
+                <p class="text-center">
+                    <button type="button" class="btn btn-success" (click)="saveEmployee()" [disabled]="employeeForm.form.invalid">
+                      <i class="fa fa-save"></i> Save
+                    </button>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a class="btn btn-info" [routerLink]="['/']">
+                      <i class="fa fa-close"></i> Close
+                    </a>
+                </p>
+            </div>
+          </div>
+    </div>
+    <div class="col-3"></div>
+</div>
+
+<!-- The Modal -->
+<div class="modal" id="responseModal" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">{{modal.title}}</h4>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        {{modal.body}}
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
